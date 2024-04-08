@@ -9,21 +9,17 @@ public abstract class Task {
 	protected String task;
 	protected LocalDateTime deadLine;
 	protected int id;
-
-	public Task(String task) {
-		this.task = task;
-	}
 	
 	public Task(String task, LocalDateTime deadLine) {
 		this.task = task;
 		this.deadLine = deadLine;
+		id = idCounter++;
 	}
 	
 	public Task(String task, LocalDateTime deadLine, int id) {
-		super();
 		this.task = task;
 		this.deadLine = deadLine;
-		this.id = id;
+		id = idCounter++;
 	}
 
 	public int getId() {

@@ -12,6 +12,7 @@ public abstract class People {
 		super();
 		this.name = name;
 		this.age = age;
+		id = idCounter++;
 	}
 
 	public String getName() {

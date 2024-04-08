@@ -9,7 +9,6 @@ public class FamilyMember extends People {
 	public FamilyMember(String name, Integer age, String familyPosition) {
 		super(name, age);
 		FamilyPosition = familyPosition;
-		id = idCounter++;
 	}
 
 	public String getFamilyPosition() {

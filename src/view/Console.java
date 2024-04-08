@@ -2,6 +2,7 @@ package view;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,27 +18,28 @@ public class Console {
 
 	PeopleService peopleService = new PeopleServiceImp();
 	TaskListService taskListService = new TaskListServiceImp();
+	
 	Scanner scan = new Scanner(System.in);
-
 	DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-
+	
 	public void console() {
-
-		int menuNumber = 3;
+		
+		inicialList();
+		int menuNumber = 10;
 
 		do {
 			try {
 				System.out.println();
-				System.out.println("1 - Adicinar membro à familia");
-				System.out.println("2 - Remover membro da familia");
-				System.out.println("3 - Mostrar a familia");
-				System.out.println("4 - mostrar lista de tarefas");
-				System.out.println("5 - Adicinar nova tarefa");
-				System.out.println("6 - remover tarefa");
-				System.out.println("7 - modificar tarefa");
-				System.out.println("8 - filtrar pelo id do membro da familia");
-				System.out.println("9 - mostrar tarefas fora do prazo");
-				System.out.println("10 - Sair");
+				System.out.println("1 - Add member to family");
+				System.out.println("2 - Remove family member");
+				System.out.println("3 - Show the family");
+				System.out.println("4 - Show task list");
+				System.out.println("5 - Add new task");
+				System.out.println("6 - Remove Task");
+				System.out.println("7 - Update Task");
+				System.out.println("8 - Filter by family member Id");
+				System.out.println("9 - Show task out deadline");
+				System.out.println("10 - Exit");
 
 				menuNumber = scan.nextInt();
 				System.out.println();
@@ -77,6 +79,7 @@ public class Console {
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("Erro de digitação");
+				scan.next();
 			}
 		} while (menuNumber != 10);
 	}
@@ -86,6 +89,7 @@ public class Console {
 			taskListService.getTaskListOutDeadLine().forEach(System.out::println);
 		} catch (InputMismatchException e) {
 			System.out.println("Erro de digitação");
+			e.printStackTrace();
 		}
 	}
 
@@ -98,6 +102,10 @@ public class Console {
 			taskListService.filterByMemberFamilyId(id).forEach(System.out::println);
 		} catch (InputMismatchException e) {
 			System.out.println("Erro de digitação");
+			e.printStackTrace();
+		}
+		catch (DateTimeParseException e) {
+			System.out.println("Erro de digitação da data");
 		}
 	}
 
@@ -129,6 +137,9 @@ public class Console {
 		} catch (InputMismatchException e) {
 			System.out.println("Erro de digitação");
 		}
+		catch (DateTimeParseException e) {
+			System.out.println("Erro de digitação");
+		}
 
 	}
 
@@ -142,6 +153,9 @@ public class Console {
 			System.out.println("Task was removed");
 		} catch (InputMismatchException e) {
 			System.out.println("Erro de digitação");
+		}
+		catch (DateTimeParseException e) {
+			System.out.println("Erro de digitação da data");
 		}
 
 	}
@@ -166,6 +180,9 @@ public class Console {
 			}
 		} catch (InputMismatchException e) {
 			System.out.println("Erro de digitação");
+		}
+		catch (DateTimeParseException e) {
+			System.out.println("Erro de digitação da data");
 		}
 	}
 
@@ -214,4 +231,23 @@ public class Console {
 			System.out.println("Erro de digitação");
 		}
 	}
+	void inicialList(){
+		FamilyMember familyMember = new FamilyMember("Roberto", 44, "Father");
+		peopleService.addPeople(familyMember);
+		TaskOfFamily taskList = new TaskOfFamily("Clean the house",LocalDateTime.now(), familyMember);
+		taskListService.addTask(taskList);
+		familyMember = new FamilyMember("Carla", 34, "Mother");
+		peopleService.addPeople(familyMember);
+		taskList = new TaskOfFamily("Clean the roons",LocalDateTime.now(), familyMember);
+		taskListService.addTask(taskList);
+		familyMember = new FamilyMember("Lurders", 84, "Grandmother");
+		peopleService.addPeople(familyMember);
+		taskList = new TaskOfFamily("take medicine",LocalDateTime.now(), familyMember);
+		taskListService.addTask(taskList);
+		familyMember = new FamilyMember("Enzo", 14, "Son");
+		peopleService.addPeople(familyMember);
+		taskList = new TaskOfFamily("Do the HomeWork",LocalDateTime.now(), familyMember);
+		taskListService.addTask(taskList);
+	}
+	
 }

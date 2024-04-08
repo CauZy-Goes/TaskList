@@ -12,7 +12,6 @@ public class TaskOfFamily extends Task{
 	public TaskOfFamily(String task, LocalDateTime deadLine, FamilyMember familyMember) {
 		super(task, deadLine);
 		this.familyMember = familyMember;
-		this.id = idCounter++;
 	}
 	
 	public TaskOfFamily(String task, LocalDateTime deadLine,FamilyMember familyMember, int id) {
@@ -30,6 +29,6 @@ public class TaskOfFamily extends Task{
 	
 	@Override
 	public String toString() {
-		return familyMember.getName() + " is " + familyMember.getAge() + " years, need to " + id +"-" + task + " until " + deadLine;
+		return  id +") - "+ familyMember.getName() + " is " + familyMember.getAge() + " years, need to " + task + " until " + deadLine;
 	}
 }
