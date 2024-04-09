@@ -33,9 +33,9 @@ O sistema oferece as seguintes funcionalidades para os usuários:
 
 ## Diagramas
 
-![image](https://github.com/yan-pi/TaskList/assets/102800044/7d24c587-a2b9-4d97-bbd5-92c5345b3dd9)
+![image](.github/actor-diagram.png)
 
-![image](https://github.com/yan-pi/TaskList/assets/102800044/918a9ae1-d5d6-443e-bdf1-583a8aea17e4)
+![image](.github/class-diagram.jpeg)
 
 ## Configuração e Uso
 
