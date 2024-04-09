@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O TaskList é um sistema gerenciador de lista de tarefas desenvolvido em Java, utilizando JDBC para interação com um sistema de persistência local. Este sistema permite que os usuários gerenciem membros da família e suas respectivas tarefas, possibilitando adicionar, modificar, remover, listar, e visualizar tarefas específicas.
+O TaskList é um sistema gerenciador de lista de tarefas desenvolvido em Java. Este sistema permite que os usuários gerenciem membros da família e suas respectivas tarefas, possibilitando adicionar, modificar, remover, listar, e visualizar tarefas específicas.
 
 ## Equipe de Desenvolvimento
 
@@ -15,8 +15,6 @@ O TaskList é um sistema gerenciador de lista de tarefas desenvolvido em Java, u
 ## Tecnologias Utilizadas
 
 - Java
-- JDBC
-- Maven
 
 ## Funcionalidades
 
@@ -38,11 +36,6 @@ O sistema oferece as seguintes funcionalidades para os usuários:
 ![image](.github/class-diagram.jpeg)
 
 ## Configuração e Uso
-
-### Pré-requisitos
-
-- JDK instalado
-- Maven instalado
 
 ### Configuração do Sistema de Persistência Local
 
