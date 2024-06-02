@@ -1,21 +1,22 @@
 package model.entities.tasks;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public abstract class Task {
-	
+
 	protected static Integer idCounter = 0;
- 
+
 	protected String task;
 	protected LocalDateTime deadLine;
 	protected int id;
-	
+
 	public Task(String task, LocalDateTime deadLine) {
 		this.task = task;
 		this.deadLine = deadLine;
 		id = idCounter++;
 	}
-	
+
 	public Task(String task, LocalDateTime deadLine, int id) {
 		this.task = task;
 		this.deadLine = deadLine;
@@ -55,25 +56,10 @@ public abstract class Task {
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
+		if (obj == null || getClass() != obj.getClass())
 			return false;
 		Task other = (Task) obj;
-		if (deadLine == null) {
-			if (other.deadLine != null)
-				return false;
-		} else if (!deadLine.equals(other.deadLine))
-			return false;
-		if (task == null) {
-			if (other.task != null)
-				return false;
-		} else if (!task.equals(other.task))
-			return false;
-		return true;
+		return Objects.equals(deadLine, other.deadLine) &&
+				Objects.equals(task, other.task);
 	}
-	
-	
-	
-	
 }
